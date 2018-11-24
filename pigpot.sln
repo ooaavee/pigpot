@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2026
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pigpot", "pigpot\pigpot.csproj", "{67ADC101-7514-4D19-966D-E18C1ED2DDAC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pigpot", "src\Pigpot\Pigpot.csproj", "{50FB64EB-2AC3-44A6-9665-0135614D6461}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pigpot.ClientApp", "src\Pigpot.ClientApp\Pigpot.ClientApp.csproj", "{CF7F77D4-51B1-4D00-A16E-EACE48356032}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +13,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{67ADC101-7514-4D19-966D-E18C1ED2DDAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{67ADC101-7514-4D19-966D-E18C1ED2DDAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{67ADC101-7514-4D19-966D-E18C1ED2DDAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{67ADC101-7514-4D19-966D-E18C1ED2DDAC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50FB64EB-2AC3-44A6-9665-0135614D6461}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50FB64EB-2AC3-44A6-9665-0135614D6461}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50FB64EB-2AC3-44A6-9665-0135614D6461}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50FB64EB-2AC3-44A6-9665-0135614D6461}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF7F77D4-51B1-4D00-A16E-EACE48356032}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF7F77D4-51B1-4D00-A16E-EACE48356032}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF7F77D4-51B1-4D00-A16E-EACE48356032}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF7F77D4-51B1-4D00-A16E-EACE48356032}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
