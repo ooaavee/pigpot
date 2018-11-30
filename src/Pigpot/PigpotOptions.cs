@@ -1,24 +1,11 @@
-﻿using Pigpot.CatalogResolvers;
-using Pigpot.RepositoryFilters;
-using Pigpot.RequestHandlerFilters;
-
-namespace Pigpot
+﻿namespace Pigpot
 {
     public class PigpotOptions
     {
-        public PigpotOptions()
-        {
-            CatalogResover = new IdentityBasedCatalogResolver("__public__");
+        public IContextFactory ContextFactory { get; set; } = new ContextFactory();
 
-            RepositoryFilter = new DefaultRepositoryFilter();
+        public ICatalogResolver CatalogResover { get; set; } = new IdentityBasedCatalogResolver("__public__");
 
-            RequestHandlerFilter = new DefaultRequestHandlerFilter();
-        }
-
-        public IRequestHandlerFilter RequestHandlerFilter { get; set; }
-
-        public ICatalogResolver CatalogResover { get; set; }
-
-        public IRepositoryFilter RepositoryFilter { get; set; }
+        public IRepositoryFilter RepositoryFilter { get; set; } = new RepositoryFilter();
     }
 }

@@ -4,6 +4,6 @@ namespace Pigpot
 {
     public interface IRepositoryFilter
     {
-        IRepository Filter(PigpotContext context, IEnumerable<IRepository> sequence);
+        IRepository Filter(RequestContext context, IEnumerable<IRepository> sequence);
     }
 }

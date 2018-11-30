@@ -1,32 +1,39 @@
-﻿using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
+﻿using Microsoft.AspNetCore.Http;
+using System.Threading.Tasks;
 
 namespace Pigpot.Middlewares
 {
     public class PigpotMiddleware
     {
         private readonly RequestDelegate _next;
-        private readonly ILogger<PigpotMiddleware> _logger;
-        private readonly PigpotOptions _options;
+        private readonly IContextFactory _factory;
 
-        public PigpotMiddleware(
-            RequestDelegate next, 
-            ILoggerFactory loggerFactory, 
-            IOptions<PigpotOptions> options)
+        public PigpotMiddleware(RequestDelegate next, IContextFactory factory)
         {
             _next = next;
-            _logger = loggerFactory.CreateLogger<PigpotMiddleware>();
-            _options = options.Value;
+            _factory = factory;
         }
 
         public async Task InvokeAsync(HttpContext context)
         {
+            RequestContext request = _factory.CreateIfShould(context);
 
+            if (request != null)
+            {
+                await request.OnRequestStartedAsync();
+            }
+            else
+            {
+                await _next(context);
+            }
 
+            //if (handler != null)
+            //{
+            //    var pigpot = new PigpotContext(context, handler);
+            //    await pigpot.OnRequestStartedAsync();
+            //    return;
+            //}
 
-            await _next(context);
         }
     }
 }

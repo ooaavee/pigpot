@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 
-namespace Pigpot.CatalogResolvers
+namespace Pigpot
 {
     /// <summary>
-    /// Resolve catalogs by using the claim value.
+    /// Resolves catalogs by using the claim value.
     /// </summary>
     public class ClaimBasedCatalogResolver : ICatalogResolver
     {

@@ -8,8 +8,10 @@ namespace Pigpot
 {
     public interface IRequestHandler
     {
-        bool CanHandle(HttpContext httpContext);
+        RequestType RequestType { get; }
 
-        Task HandleAsync(PigpotContext context);
+        PathString RootPath { get; }
+
+        Task HandleAsync(RequestContext context);
     }
 }

@@ -8,12 +8,22 @@ namespace Pigpot.RequestHandlers
 {
     public abstract class RequestHandlerBase : IRequestHandler
     {
-        public bool CanHandle(HttpContext httpContext)
+
+        protected RequestHandlerBase()
         {
-            return false;
         }
 
-        public Task HandleAsync(PigpotContext context)
+        protected RequestHandlerBase(RequestType requestType, PathString rootPath)
+        {
+            RequestType = requestType;
+            RootPath = rootPath;
+        }
+
+        public RequestType RequestType { get; }
+
+        public PathString RootPath { get; }
+
+        public Task HandleAsync(RequestContext context)
         {
             return Task.CompletedTask;
         }

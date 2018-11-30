@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 
-namespace Pigpot.CatalogResolvers
+namespace Pigpot
 {
     /// <summary>
     /// Resolve catalogs by using the name of the current user.

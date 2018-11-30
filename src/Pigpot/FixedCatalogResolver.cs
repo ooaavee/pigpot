@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Http;
 
-namespace Pigpot.CatalogResolvers
+namespace Pigpot
 {
     /// <summary>
-    /// Resolve catalogs by using the fixed catalog name.
+    /// Resolves catalogs by using the fixed catalog name.
     /// </summary>
     public class FixedCatalogResolver : ICatalogResolver
     {

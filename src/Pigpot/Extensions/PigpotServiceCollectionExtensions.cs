@@ -14,9 +14,9 @@ namespace Microsoft.Extensions.DependencyInjection
 
             setup?.Invoke(options);
 
-            services.AddSingleton<IRequestHandlerFilter>(x => { return options.RequestHandlerFilter; });
-            services.AddSingleton<ICatalogResolver>(x => { return options.CatalogResover; });
-            services.AddSingleton<IRepositoryFilter>(x => { return options.RepositoryFilter; });
+            services.AddSingleton<IContextFactory>(x => options.ContextFactory);
+            services.AddSingleton<ICatalogResolver>(x => options.CatalogResover);
+            services.AddSingleton<IRepositoryFilter>(x => options.RepositoryFilter);
 
             services.AddSingleton<IRequestHandler, GetClientApp>();
             services.AddSingleton<IRequestHandler, GetSingle>();

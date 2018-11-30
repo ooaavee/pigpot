@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Pigpot
+﻿namespace Pigpot
 {
     public class Catalog
     {
@@ -11,6 +7,6 @@ namespace Pigpot
             Name = name;
         }
 
-        public string Name { get;  }
+        public virtual string Name { get; }
     }
 }

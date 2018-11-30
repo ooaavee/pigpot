@@ -1,4 +1,5 @@
-﻿using Pigpot.Middlewares;
+﻿using Pigpot;
+using Pigpot.Middlewares;
 
 // ReSharper disable once CheckNamespace
 namespace Microsoft.AspNetCore.Builder

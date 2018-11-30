@@ -4,7 +4,8 @@ using System.Text;
 
 namespace Pigpot
 {
-    public class PigpotContext
+    public interface IRequestKey
     {
+        string Value();
     }
 }

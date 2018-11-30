@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Pigpot.RepositoryFilters
+namespace Pigpot
 {
-    public class DefaultRepositoryFilter : IRepositoryFilter
+    public class RepositoryFilter : IRepositoryFilter
     {
-        public IRepository Filter(PigpotContext context, IEnumerable<IRepository> sequence)
+        public IRepository Filter(RequestContext context, IEnumerable<IRepository> sequence)
         {
             IRepository[] repositories = sequence.ToArray();
 
