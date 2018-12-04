@@ -7,11 +7,9 @@ using Microsoft.AspNetCore.Http;
 namespace Pigpot
 {
     public interface IRequestHandler
-    {
-        RequestType RequestType { get; }
+    {       
+        bool CanHandle(HttpRequest request);
 
-        PathString RootPath { get; }
-
-        Task HandleAsync(RequestContext context);
+        Task<object> HandleAsync(RequestContext context);
     }
 }

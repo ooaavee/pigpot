@@ -3,12 +3,12 @@ using System.Threading.Tasks;
 
 namespace Pigpot.Middlewares
 {
-    public class PigpotMiddleware
+    public class PigpotCrudMiddleware
     {
         private readonly RequestDelegate _next;
         private readonly IContextFactory _factory;
 
-        public PigpotMiddleware(RequestDelegate next, IContextFactory factory)
+        public PigpotCrudMiddleware(RequestDelegate next, IContextFactory factory)
         {
             _next = next;
             _factory = factory;
@@ -18,21 +18,15 @@ namespace Pigpot.Middlewares
         {
             RequestContext request = _factory.CreateIfShould(context);
 
-            if (request != null)
-            {
-                await request.OnRequestStartedAsync();
-            }
-            else
+            if (request == null)
             {
                 await _next(context);
+                return;
             }
 
-            //if (handler != null)
-            //{
-            //    var pigpot = new PigpotContext(context, handler);
-            //    await pigpot.OnRequestStartedAsync();
-            //    return;
-            //}
+            object result = await request.HandleAsync();
+
+            // TODO: write response!
 
         }
     }

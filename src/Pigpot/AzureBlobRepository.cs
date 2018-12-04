@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Pigpot.RequestHandlers
+namespace Pigpot
 {
-    public class GetAll : RequestHandlerBase
+    public class AzureBlobRepository : IRepository
     {
     }
 }

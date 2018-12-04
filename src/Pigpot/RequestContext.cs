@@ -10,16 +10,12 @@ namespace Pigpot
     public class RequestContext
     {
         private readonly IRequestHandler _handler;
-        private readonly IRequestKey _key;
-        private string _path;
-        private string _content;
 
-        public RequestContext(HttpContext httpContext, IRequestHandler handler, IRequestKey key, Catalog catalog)
+        public RequestContext(HttpContext httpContext, Catalog catalog, IRequestHandler handler)
         {
-            _handler = handler;
-            Key = key.Value();
+            HttpContext = httpContext;
             Catalog = catalog;
-            HttpContext = httpContext;  
+            _handler = handler;
         }
 
         /// <summary>
@@ -28,40 +24,31 @@ namespace Pigpot
         public HttpContext HttpContext { get; }
 
         /// <summary>
-        /// The current key or null if not available
-        /// </summary>
-        public string Key { get; }
-
-        /// <summary>
         /// The current catalog
         /// </summary>
         public Catalog Catalog { get; }
 
-        /// <summary>
-        /// The current path
-        /// </summary>
-        public string Path => _path ?? (_path = ResolvePath(HttpContext));
+       
 
-        /// <summary>
-        /// The current content or null if not available
-        /// </summary>
-        public string Content => _content ?? (_content = ResolveContent(HttpContext));
-        
-        private static string ResolvePath(HttpContext httpContext)
+        ///// <summary>
+        ///// The current content or null if not available
+        ///// </summary>
+        //public string Content => _content ?? (_content = ResolveContent(HttpContext));
+
+        //private static string ResolvePath(HttpContext httpContext)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        //private static string ResolveContent(HttpContext httpContext)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+
+        public async Task<object> HandleAsync()
         {
-            throw new NotImplementedException();
-        }
-
-        private static string ResolveContent(HttpContext httpContext)
-        {
-            throw new NotImplementedException();
-        }
-
-
-        public async Task OnRequestStartedAsync()
-        {
-            throw new NotImplementedException();
-
+            return await _handler.HandleAsync(this);
         }
     }
 }

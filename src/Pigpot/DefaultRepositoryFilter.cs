@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Pigpot
 {
-    public class RepositoryFilter : IRepositoryFilter
+    public class DefaultRepositoryFilter : IRepositoryFilter
     {
         public IRepository Filter(RequestContext context, IEnumerable<IRepository> sequence)
         {

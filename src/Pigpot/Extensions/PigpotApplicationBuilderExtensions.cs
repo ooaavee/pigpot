@@ -6,9 +6,9 @@ namespace Microsoft.AspNetCore.Builder
 {
     public static class PigpotApplicationBuilderExtensions
     {
-        public static IApplicationBuilder UsePigpot(this IApplicationBuilder builder)
+        public static IApplicationBuilder UsePigpotCrud(this IApplicationBuilder builder)
         {
-            return builder.UseMiddleware<PigpotMiddleware>();
+            return builder.UseMiddleware<PigpotCrudMiddleware>();
         }
     }
 }
