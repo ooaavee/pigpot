@@ -1,9 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Http;
+using System.Collections.Generic;
 
 namespace Pigpot
 {
     public interface IRepositoryFilter
     {
-        IRepository Filter(RequestContext context, IEnumerable<IRepository> sequence);
+        IRepository Filter(ICatalog catalog, PathString path, IEnumerable<IRepository> sequence);
     }
 }

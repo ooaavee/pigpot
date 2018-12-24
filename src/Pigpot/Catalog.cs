@@ -1,6 +1,6 @@
 ﻿namespace Pigpot
 {
-    public class Catalog
+    public class Catalog : ICatalog
     {
         public Catalog(string name)
         {

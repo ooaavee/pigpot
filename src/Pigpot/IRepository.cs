@@ -8,16 +8,21 @@ namespace Pigpot
 {
     public interface IRepository
     {
-        Task<string> GetSingleAsync(Catalog catalog, PathString path, string key);
-        Task<T> GetSingleAsync<T>(Catalog catalog, PathString path, string key);
-        Task<IEnumerable<string>> GetAllAsync(Catalog catalog, PathString path);
-        Task<IEnumerable<T>> GetAllAsync<T>(Catalog catalog, PathString path);
-        Task<string> AddAsync(Catalog catalog, PathString path, string key, string content);
-        Task<string> AddAsync<T>(Catalog catalog, PathString path, string key, T content);
-        Task<string> UpdateAsync(Catalog catalog, PathString path, string key, string content);
-        Task<T> UpdateAsync<T>(Catalog catalog, PathString path, string key, T content);
-        Task<string> AddOrUpdateAsync(Catalog catalog, PathString path, string key, string content);
-        Task<T> AddOrUpdateAsync<T>(Catalog catalog, PathString path, string key, T content);
-        Task<string> DeleteAsync(Catalog catalog, PathString path, string key);
+        Task<string> GetSingleAsync(IRequestContext context, string key);
+        Task<T> GetSingleAsync<T>(IRequestContext context, string key);
+
+        Task<IEnumerable<string>> GetAllAsync(IRequestContext context);
+        Task<IEnumerable<T>> GetAllAsync<T>(IRequestContext context);
+
+        Task<string> AddAsync(IRequestContext context, string key, string content);
+        Task<string> AddAsync<T>(IRequestContext context, string key, T content);
+
+        Task<string> UpdateAsync(IRequestContext context, string key, string content);
+        Task<string> UpdateAsync<T>(IRequestContext context, string key, T content);
+
+        Task<string> AddOrUpdateAsync(IRequestContext context, string key, string content);
+        Task<string> AddOrUpdateAsync<T>(IRequestContext context, string key, T content);
+
+        Task<string> DeleteAsync(IRequestContext context, string key);
     }
 }

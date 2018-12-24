@@ -8,7 +8,7 @@ namespace Microsoft.AspNetCore.Builder
     {
         public static IApplicationBuilder UsePigpotCrud(this IApplicationBuilder builder)
         {
-            return builder.UseMiddleware<PigpotCrudMiddleware>();
+            return builder.UseMiddleware<CrudMiddleware>();
         }
     }
 }

@@ -5,8 +5,6 @@ VisualStudioVersion = 15.0.27703.2026
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pigpot", "src\Pigpot\Pigpot.csproj", "{50FB64EB-2AC3-44A6-9665-0135614D6461}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pigpot.ClientApp", "src\Pigpot.ClientApp\Pigpot.ClientApp.csproj", "{CF7F77D4-51B1-4D00-A16E-EACE48356032}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAppDemo", "demo\WebAppDemo\WebAppDemo.csproj", "{5F883E5A-C301-4AB6-8FC9-3E669331869F}"
 EndProject
 Global
@@ -19,10 +17,6 @@ Global
 		{50FB64EB-2AC3-44A6-9665-0135614D6461}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{50FB64EB-2AC3-44A6-9665-0135614D6461}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{50FB64EB-2AC3-44A6-9665-0135614D6461}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CF7F77D4-51B1-4D00-A16E-EACE48356032}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CF7F77D4-51B1-4D00-A16E-EACE48356032}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CF7F77D4-51B1-4D00-A16E-EACE48356032}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CF7F77D4-51B1-4D00-A16E-EACE48356032}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5F883E5A-C301-4AB6-8FC9-3E669331869F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5F883E5A-C301-4AB6-8FC9-3E669331869F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5F883E5A-C301-4AB6-8FC9-3E669331869F}.Release|Any CPU.ActiveCfg = Release|Any CPU

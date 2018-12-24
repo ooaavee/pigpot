@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Microsoft.AspNetCore.Http;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 
 namespace Pigpot
 {
     public interface IRequestHandler
     {       
-        bool CanHandle(HttpRequest request);
+        bool Accept(HttpRequest request, out PathString path);
 
-        Task<object> HandleAsync(RequestContext context);
+        Task HandleAsync(IRequestContext context);
     }
 }

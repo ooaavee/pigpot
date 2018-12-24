@@ -1,18 +1,29 @@
-﻿namespace Pigpot
+﻿using System;
+using System.Collections.Generic;
+using Pigpot.Services;
+
+namespace Pigpot
 {
     public class PigpotOptions
     {
-        public IContextFactory ContextFactory { get; set; } 
+        public Type RequestContextFactoryType { get; set; } = typeof(DefaultRequestContextFactory);
 
-        public ICatalogResolver CatalogResover { get; set; }
-            
-        public IRepositoryFilter RepositoryFilter { get; set; }
+        public Type CatalogResoverType { get; set; } = typeof(DefaultCatalogResolver);
 
-        public PigpotOptions()
+        public Type RepositoryFilterType { get; set; } = typeof(DefaultRepositoryFilter);
+
+        public Type PigpotServiceType { get; set; } = typeof(PigpotService);
+
+        public bool AddHttpContextAccessor { get; set; } = true;
+
+        public List<Type> RequestHandlerTypes { get; set; } = new List<Type>(new[]
         {
-            ContextFactory = new DefaultContextFactory();
-            CatalogResover = DefaultCatalogResolver.AsIdentityBasedCatalogResolver("__public__");
-            RepositoryFilter = new DefaultRepositoryFilter();
-        }
+            typeof(GetSingle),
+            typeof(GetAll),
+            typeof(AddSingle),
+            typeof(UpdateSingle),
+            typeof(AddOrUpdateSingle),
+            typeof(DeleteSingle)
+        });       
     }
 }
