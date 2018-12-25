@@ -14,14 +14,9 @@ namespace Pigpot.Services
             _accessor = accessor;
         }
 
-        public IRequestContext ForPath(string path)
+        public IRequestContext CreateRequestContext(string path)
         {
-            return ForPath(new PathString(path));
-        }
-
-        public IRequestContext ForPath(PathString path)
-        {
-            ICatalog catalog = _resolver.Resolve(_accessor.HttpContext);
+            var catalog = _resolver.GetCatalog(_accessor.HttpContext);
             if (catalog == null)
             {
                 throw new InvalidOperationException($"{nameof(ICatalogResolver)} did not found any suitable catalog.");
@@ -29,12 +24,7 @@ namespace Pigpot.Services
             return new RequestContext(_accessor.HttpContext, catalog, path);
         }
 
-        public IRequestContext ForPathAndCatalog(string path, string catalog)
-        {
-            return ForPathAndCatalog(new PathString(path), new Catalog(catalog));
-        }
-
-        public IRequestContext ForPathAndCatalog(PathString path, Catalog catalog)
+        public IRequestContext CreateRequestContext(string path, string catalog)
         {
             return new RequestContext(_accessor.HttpContext, catalog, path);
         }

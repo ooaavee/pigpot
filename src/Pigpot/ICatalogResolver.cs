@@ -4,6 +4,6 @@ namespace Pigpot
 {
     public interface ICatalogResolver
     {
-        ICatalog Resolve(HttpContext context);
+        string GetCatalog(HttpContext context);
     }
 }

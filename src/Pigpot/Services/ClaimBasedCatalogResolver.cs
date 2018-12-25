@@ -20,15 +20,15 @@ namespace Pigpot.Services
             _fallback = new FixedCatalogResolver(fallback);
         }
 
-        public ICatalog Resolve(HttpContext context)
+        public string GetCatalog(HttpContext context)
         {
-            ICatalog catalog = null;
+            string catalog = null;
 
             if (context.User != null)
             {
                 var names = new List<string>();
 
-                foreach (Claim claim in context.User.Claims.Where(claim => claim.Type == _claimType))
+                foreach (Claim claim in context.User.Claims.Where(x => x.Type == _claimType))
                 {
                     if (!string.IsNullOrEmpty(claim.Value))
                     {
@@ -46,11 +46,11 @@ namespace Pigpot.Services
                         throw new InvalidOperationException("Found multiple catalog name candidates.");
                     }
 
-                    catalog = new Catalog(names.Single());
+                    catalog = names.Single();
                 }
             }
 
-            return catalog ?? _fallback.Resolve(context);
+            return catalog ?? _fallback.GetCatalog(context);
         }
     }
 }

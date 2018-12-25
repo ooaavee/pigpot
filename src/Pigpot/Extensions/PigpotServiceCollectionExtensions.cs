@@ -1,7 +1,7 @@
 ﻿using Pigpot;
 using Pigpot.Azure;
-using System;
 using Pigpot.Services;
+using System;
 
 // ReSharper disable once CheckNamespace
 namespace Microsoft.Extensions.DependencyInjection
@@ -10,7 +10,7 @@ namespace Microsoft.Extensions.DependencyInjection
     {
         public static IServiceCollection AddPigpot(this IServiceCollection services, Action<PigpotOptions> setup = null)
         {
-            PigpotOptions options = new PigpotOptions();
+            var options = new PigpotOptions();
 
             setup?.Invoke(options);
 
@@ -34,7 +34,7 @@ namespace Microsoft.Extensions.DependencyInjection
 
         public static IServiceCollection AddAzureBlobStorageForPigpot(this IServiceCollection services, Action<AzureBlobSettings> setup)
         {
-            AzureBlobSettings settings = new AzureBlobSettings();
+            var settings = new AzureBlobSettings();
 
             setup(settings);
 

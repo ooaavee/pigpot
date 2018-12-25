@@ -22,9 +22,9 @@ namespace Pigpot.Middlewares
         {
             foreach (IRequestHandler handler in context.RequestServices.GetServices<IRequestHandler>())
             {
-                if (handler.Accept(context.Request, out PathString path))
+                if (handler.CanHandle(context.Request, out string path))
                 {
-                    IRequestContext ctx = _factory.ForPath(path);
+                    IRequestContext ctx = _factory.CreateRequestContext(path);
                     await handler.HandleAsync(ctx);
                     return;
                 }

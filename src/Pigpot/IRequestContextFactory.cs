@@ -1,15 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
-
-namespace Pigpot
+﻿namespace Pigpot
 {
     public interface IRequestContextFactory
     {
-        IRequestContext ForPath(string path);
-
-        IRequestContext ForPath(PathString path);
-
-        IRequestContext ForPathAndCatalog(string path, string catalog);
-
-        IRequestContext ForPathAndCatalog(PathString path, Catalog catalog);
+        IRequestContext CreateRequestContext(string path);
+        IRequestContext CreateRequestContext(string path, string catalog);
     }
 }

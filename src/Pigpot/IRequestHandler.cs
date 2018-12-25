@@ -5,7 +5,7 @@ namespace Pigpot
 {
     public interface IRequestHandler
     {       
-        bool Accept(HttpRequest request, out PathString path);
+        bool CanHandle(HttpRequest request, out string path);
 
         Task HandleAsync(IRequestContext context);
     }

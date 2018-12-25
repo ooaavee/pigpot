@@ -4,8 +4,8 @@ namespace Pigpot
 {
     public class RequestContext : IRequestContext
     {
-        public RequestContext(HttpContext httpContext, ICatalog catalog, PathString path)
-        {
+        public RequestContext(HttpContext httpContext, string catalog, string path)
+        {           
             HttpContext = httpContext;
             Catalog = catalog;
             Path = path;
@@ -13,8 +13,8 @@ namespace Pigpot
 
         public virtual HttpContext HttpContext { get; }
 
-        public virtual ICatalog Catalog { get; }
+        public virtual string Catalog { get; }
 
-        public virtual PathString Path { get; }
+        public virtual string Path { get; }
     }
 }

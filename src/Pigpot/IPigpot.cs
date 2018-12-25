@@ -7,10 +7,8 @@ namespace Pigpot
     public interface IPigpot
     {
         //Task<string> GetSingleAsync(string path);
-        //Task<string> GetSingleAsync(PathString path);
         //Task<string> GetSingleAsync(string path, string catalog);
 
-        //Task<T> GetSingleAsync<T>(PathString path);
         //Task<T> GetSingleAsync<T>(string path);
         //Task<T> GetSingleAsync<T>(string path, string catalog);
 

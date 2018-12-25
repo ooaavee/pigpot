@@ -21,24 +21,25 @@ namespace Pigpot.Services
         private const string ForceParam = "force";
 
         protected RequestType Type { get; }
-        protected IPigpot Service { get; }
 
-        protected RequestHandlerBase(IPigpot service, RequestType type)
+        protected RequestHandlerBase(RequestType type)
         {  
             Type = type;
-            Service = service;
         }
 
-        public bool Accept(HttpRequest request, out PathString path)
+        public bool CanHandle(HttpRequest request, out string path)
         {
-            if (request.Path.StartsWithSegments(RootPath) && IsRequestTypeMatch(request, Type))
+            path = null;
+
+            if (request.Path.StartsWithSegments(RootPath))
             {
-                path = new PathString(request.Path.Value.Substring(RootPath.Length));
-                return true;
+                if (IsRequestType(request, Type))
+                {
+                    path = request.Path.Value.Substring(RootPath.Length);
+                }
             }
 
-            path = default(PathString);
-            return false;
+            return path != null;
         }
 
         public async Task HandleAsync(IRequestContext context)
@@ -77,32 +78,31 @@ namespace Pigpot.Services
             }
         }
 
-        private static bool IsRequestTypeMatch(HttpRequest request, RequestType lookFor)
+        private static bool IsRequestType(HttpRequest request, RequestType wanted)
         {
+            string method = request.Method;
+
             RequestType current = RequestType.Unknown;
 
-            if (request.Method == HttpMethods.Get)
+            if (method == HttpMethods.Get)
             {
                 current = HasKey(request) ? RequestType.GetSingle : RequestType.GetAll;
             }
-
-            if (request.Method == HttpMethods.Post)
+            else if (method == HttpMethods.Post)
             {
                 if (HasKey(request) || UseKeyGen(request))
                 {
                     current = RequestType.AddSingle;
                 }
             }
-
-            if (request.Method == HttpMethods.Put)
+            else if (method == HttpMethods.Put)
             {
                 if (HasKey(request))
                 {
                     current = IsForceSave(request) ? RequestType.AddOrUpdateSingle : RequestType.UpdateSingle;
                 }
             }
-
-            if (request.Method == HttpMethods.Delete)
+            else if (method == HttpMethods.Delete)
             {
                 if (HasKey(request))
                 {
@@ -110,7 +110,7 @@ namespace Pigpot.Services
                 }
             }
 
-            return current == lookFor;
+            return current == wanted;
         }
 
         private static bool HasKey(HttpRequest request)
@@ -224,6 +224,5 @@ namespace Pigpot.Services
                 }
             }
         }
-
     }
 }

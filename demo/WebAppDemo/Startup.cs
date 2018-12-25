@@ -30,6 +30,7 @@ namespace WebAppDemo
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             app.UsePigpotCrud();
+            app.UsePigpotClientApp();
 
             app.Run(async context =>
             {

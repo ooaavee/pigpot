@@ -12,11 +12,11 @@ namespace Pigpot
         /// <summary>
         /// The current catalog
         /// </summary>
-        ICatalog Catalog { get; }
+        string Catalog { get; }
 
         /// <summary>
         /// The current path
         /// </summary>
-        PathString Path { get; }
+        string Path { get; }
     }
 }

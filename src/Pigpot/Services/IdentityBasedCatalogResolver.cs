@@ -14,16 +14,16 @@ namespace Pigpot.Services
             _fallback = new FixedCatalogResolver(fallback);
         }
 
-        public ICatalog Resolve(HttpContext context)
+        public string GetCatalog(HttpContext context)
         {
-            ICatalog catalog = null;
+            string catalog = null;
 
             if (context.User != null && context.User.Identity.IsAuthenticated)
             {
-                catalog = new Catalog(context.User.Identity.Name);
+                catalog = context.User.Identity.Name;
             }
 
-            return catalog ?? _fallback.Resolve(context);
+            return catalog ?? _fallback.GetCatalog(context);
         }
     }
 }

@@ -14,9 +14,9 @@ namespace Pigpot.Services
             _name = name;
         }
 
-        public ICatalog Resolve(HttpContext context)
+        public string GetCatalog(HttpContext context)
         {
-            return new Catalog(_name);
+            return _name;
         }
     }
 }

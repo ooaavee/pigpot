@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -7,7 +6,7 @@ namespace Pigpot.Services
 {
     public class DefaultRepositoryFilter : IRepositoryFilter
     {
-        public IRepository Filter(ICatalog catalog, PathString path, IEnumerable<IRepository> sequence)
+        public IRepository Filter(string catalog, string path, IEnumerable<IRepository> sequence)
         {
             try
             {

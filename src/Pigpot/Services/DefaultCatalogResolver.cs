@@ -2,8 +2,6 @@
 {
     public class DefaultCatalogResolver : IdentityBasedCatalogResolver
     {
-        public DefaultCatalogResolver() : base("__public__")
-        {
-        }
+        public DefaultCatalogResolver() : base("__public__") { }
     }
 }
