@@ -10,11 +10,11 @@ namespace Pigpot.Azure
 {
     public class AzureBlobStorage : IAzureBlobStorage
     {
-        private readonly AzureBlobSettings _settings;
+        private readonly AzureBlobOptions _options;
 
-        public AzureBlobStorage(AzureBlobSettings settings)
+        public AzureBlobStorage(AzureBlobOptions options)
         {
-            _settings = settings;
+            _options = options;
         }
         
         public async Task UploadAsync(string blobName, string filePath)
@@ -119,7 +119,7 @@ namespace Pigpot.Azure
         private async Task<CloudBlobContainer> GetContainerAsync()
         {
             //Account
-            if (!CloudStorageAccount.TryParse(_settings.ConnectionString, out CloudStorageAccount storageAccount))
+            if (!CloudStorageAccount.TryParse(_options.ConnectionString, out CloudStorageAccount storageAccount))
             {
                 throw new InvalidOperationException("Invalid connection string format.");
             }
@@ -128,7 +128,7 @@ namespace Pigpot.Azure
             CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
 
             //Container
-            CloudBlobContainer blobContainer = blobClient.GetContainerReference(_settings.ContainerName);
+            CloudBlobContainer blobContainer = blobClient.GetContainerReference(_options.ContainerName);
             await blobContainer.CreateIfNotExistsAsync();
             //await blobContainer.SetPermissionsAsync(new BlobContainerPermissions() { PublicAccess = BlobContainerPublicAccessType.Blob });
 

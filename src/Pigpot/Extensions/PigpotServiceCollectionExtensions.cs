@@ -32,13 +32,20 @@ namespace Microsoft.Extensions.DependencyInjection
             return services;
         }
 
-        public static IServiceCollection AddAzureBlobStorageForPigpot(this IServiceCollection services, Action<AzureBlobSettings> setup)
+        public static IServiceCollection AddAzureBlobStorageForPigpot(this IServiceCollection services, Action<AzureBlobOptions> setup)
         {
-            var settings = new AzureBlobSettings();
+            var options = new AzureBlobOptions();
 
-            setup(settings);
+            // this is the default container name, but can be changed if wanted
+            options.ContainerName = "pigpot";
 
-            services.AddSingleton<IAzureBlobStorage>(new AzureBlobStorage(settings));
+            // by default we use the Windows Azure Emulator, but this value
+            // should be replaced with a real connection string
+            options.ConnectionString = "UseDevelopmentStorage=true;";
+
+            setup(options);
+
+            services.AddSingleton<IAzureBlobStorage>(new AzureBlobStorage(options));
             services.AddSingleton<IRepository, AzureBlobRepository>();
 
             return services;
