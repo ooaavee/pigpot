@@ -8,13 +8,13 @@ namespace Pigpot.Middlewares
     public class CrudMiddleware
     {
         private readonly RequestDelegate _next;
-        private readonly IRequestContextFactory _factory;
+        private readonly IRequestContextFactory _contextFactory;
         private readonly ILogger<CrudMiddleware> _logger;
 
-        public CrudMiddleware(RequestDelegate next, IRequestContextFactory factory, ILoggerFactory loggerFactory)
+        public CrudMiddleware(RequestDelegate next, IRequestContextFactory contextFactory, ILoggerFactory loggerFactory)
         {
             _next = next;
-            _factory = factory;
+            _contextFactory = contextFactory;
             _logger = loggerFactory.CreateLogger<CrudMiddleware>();
         }
 
@@ -24,7 +24,7 @@ namespace Pigpot.Middlewares
             {
                 if (handler.CanHandle(context.Request, out string path))
                 {
-                    IRequestContext ctx = _factory.CreateRequestContext(path);
+                    IRequestContext ctx = _contextFactory.CreateRequestContext(path);
                     await handler.HandleAsync(ctx);
                     return;
                 }
